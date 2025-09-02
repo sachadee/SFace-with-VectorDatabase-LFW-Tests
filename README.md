@@ -5,7 +5,8 @@ A Python complete API implementation leveraging vector database technology for h
 
 This API use a self developed vector Database to store and compare embedding vectors. 
 
-I provide a fulfilled database with all the LFW dataset (12853 images) embeddings in it for testes purpose.
+I provide a fulfilled database with all the LFW dataset (12853 images) embeddings generated with the SFace recognition model  for tests purpose.
+https://www.kaggle.com/datasets/jessicali9530/lfw-dataset
 
 there is 2 python classes : 
 
@@ -120,7 +121,7 @@ Basically:
 	face_system.add_face(image,name)
 	face_system.del_face(name)
 	res = face_system.match(image,name,threshold=0.46)
-	res = face_system.recognize(image,k=5,threshold=0.46)
+	res = face_system.recognize(image,k=5,threshold=0.46) #k=5 to get the five best results inside the threshold.
  
  	##the add_face function will automatically make these 2 functions
     aligned_face = face_system.detect_face(image)

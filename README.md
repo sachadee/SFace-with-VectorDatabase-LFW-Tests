@@ -21,7 +21,7 @@ there is 2 python classes :
 	time
 	pybase64
 	io
-	json
+	orjson
 	random
 	os
 

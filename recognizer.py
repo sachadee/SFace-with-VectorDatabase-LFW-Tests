@@ -299,7 +299,10 @@ class FaceRecognitionSystem:
         })
 
         return {"status": "added", "name": name, "uid": face_id}
-
+        
+    def del_face(self,name: str) -> Dict:
+        return self.vecDb.deleteAllFiltered(where={"name": name})
+        
     def search(self, query_embedding: np.ndarray, top_k=1, threshold = 0.5) -> Optional[List[Dict]]:
         """
         Search for the top-k most similar faces in the database based on cosine similarity.
@@ -402,4 +405,5 @@ class FaceRecognitionSystem:
         else:
             endT = time.time() - start
             return matches
+
 

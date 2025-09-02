@@ -121,5 +121,5 @@ The recognizer file is well documented!
 
 just download the codes and run :
 
-> python demo.py
+> >> **python demo.py**
 

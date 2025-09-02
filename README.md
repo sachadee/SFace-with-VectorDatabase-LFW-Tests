@@ -21,6 +21,7 @@ there is 2 python classes :
 	time
 	pybase64
 	io
+ 	orjson #Important for VectorDatabase
 	json
 	random
 	os

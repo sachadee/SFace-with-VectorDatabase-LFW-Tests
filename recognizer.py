@@ -230,7 +230,7 @@ class FaceRecognitionSystem:
        padded = cv2.copyMakeBorder(resized, top, bottom, left, right, cv2.BORDER_CONSTANT, value=(0, 0, 0))
        return padded
 
-    def detect_face(self, image: np.ndarray) -> Optional[np.ndarray]:
+    def detect_face(self, image: Union[str, np.ndarray]) -> Optional[np.ndarray]:
         """
         Detect the first face in the image and return an aligned cropped version.
 
@@ -240,6 +240,9 @@ class FaceRecognitionSystem:
         Returns:
             np.ndarray: Aligned cropped face or None if no face detected.
         """
+
+        image = self.load_image_as_cv2(image)
+
         if image is None:
             raise ValueError("Input image is None")
 
@@ -270,7 +273,7 @@ class FaceRecognitionSystem:
         return embedding[0]
 
 
-    def add_face(self, image: np.ndarray, name: str) -> Dict:
+    def add_face(self, image: Union[str, np.ndarray], name: str) -> Dict:
         """
         Detect,Align and embed a face from an image, then store it in the vector database.
 
@@ -281,6 +284,9 @@ class FaceRecognitionSystem:
         Returns:
             dict: Status and ID of the added face.
         """
+
+        image = self.load_image_as_cv2(image)
+
         aligned = self.detect_face(image)
         
         if aligned is None:
@@ -299,7 +305,8 @@ class FaceRecognitionSystem:
         })
 
         return {"status": "added", "name": name, "uid": face_id}
-        
+
+    
     def del_face(self,name: str) -> Dict:
         return self.vecDb.deleteAllFiltered(where={"name": name})
         
@@ -333,7 +340,7 @@ class FaceRecognitionSystem:
         return results[:top_k] if results else None
 
 
-    def match(self, image: np.ndarray,match_name: str,threshold=0.4) -> None:
+    def match(self, image: Union[str, np.ndarray],match_name: str,threshold=0.4) -> None:
         """
         Check if the given image matches a person already in the database.
 
@@ -345,8 +352,8 @@ class FaceRecognitionSystem:
         Returns:
             dict: Result with status, similarity, and inference time.
         """
-
         start = time.time()
+        image = self.load_image_as_cv2(image)
         if image is None:
             print("[ERROR] No image.")
             return {"status": "error", "msg": "no image"}
@@ -374,7 +381,7 @@ class FaceRecognitionSystem:
             return {"status": "error","msg": "not in database", "name": match_name}
 
 
-    def recognize(self, image: np.ndarray,k: int = 1, threshold: float = 0.5) -> None:
+    def recognize(self, image:Union[str, np.ndarray], k: int = 1, threshold: float = 0.5) -> None:
         """
         Recognize a person from the image by comparing with all stored faces.
 
@@ -384,7 +391,9 @@ class FaceRecognitionSystem:
         Returns:
             dict: Recognition result including name, ID, similarity, and inference time.
         """
+
         start = time.time()
+        image = self.load_image_as_cv2(image)
         if image is None:
             return {"status": "error", "msg": "no image"}
 
@@ -399,11 +408,8 @@ class FaceRecognitionSystem:
                             k=k,
                             threshold=threshold
                     )
-
         if not matches:
             return {"status": "success","msg": "unrecognized"}
         else:
             endT = time.time() - start
             return matches
-
-

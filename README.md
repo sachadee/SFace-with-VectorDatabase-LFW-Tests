@@ -120,11 +120,21 @@ Basically:
 	face_system.add_face(image,name)
 	face_system.del_face(name)
 	res = face_system.match(image,name,threshold=0.46)
-	res = face_system,recognize(image,k=5,threshold=0.46)
+	res = face_system.recognize(image,k=5,threshold=0.46)
+ 
+ 	##the add_face function will automatically make these 2 functions
+    aligned_face = face_system.detect_face(image)
+ 	embedding = face_system.extract_embedding(aligned_face)
 
  to init your own vectorDatabase just edit the file recognizer.py : and chanche the `collection` name in the class init part :
 
- 
+    def __init__(self, 
+              detector_path='./model/face_detection_yunet_2023mar.onnx',
+              recognizer_path='./model/face_recognition_sface_2021dec_int8bq.onnx',
+              db_path='vector_db',
+              collection='Your_Collection_Name', #### Put the new collection Name here
+        	  cropped_dir='croppedFaces',
+              target_size=320):
 
 The recognizer file is well documented!
 

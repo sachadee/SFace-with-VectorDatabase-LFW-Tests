@@ -45,7 +45,7 @@ where `data_dir` is the directory where the databases will be stored and `collec
 |`get`|`where` Optional json dict key:value to  search in the database | `incl`Optional ['vector','metadata'] the desired element(s) to include in the response||
 |`getTotalFaces`|||
 |`get_vector`|`vector_id` int index of the vector to get||
-|`delete_vector`|`vector_id`|int index of the vector to delete|
+|`delete_vector`|`vector_id` int index of the vector to delete||
 
 
 

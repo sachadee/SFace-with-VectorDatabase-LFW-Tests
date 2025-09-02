@@ -114,8 +114,8 @@ Basically:
 
 	face_system.add_face(image,name)
 	face_system.del_face(name)
-	face_system.match(image,name,threshold=0.46)
-	face_system,recognize(image,k=5,threshold=0.46)
+	res = face_system.match(image,name,threshold=0.46)
+	res = face_system,recognize(image,k=5,threshold=0.46)
 
 The recognizer file is well documented!
 

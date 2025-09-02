@@ -21,7 +21,7 @@ there is 2 python classes :
 	time
 	pybase64
 	io
-	orjson
+	json
 	random
 	os
 
@@ -34,6 +34,8 @@ the vectorDatabase class can be used in other project to init it for another pro
 	db = VectorDatabase(data_dir='vector_db',collection='default', dim=128 )
 
 where `data_dir` is the directory where the databases will be stored and `collection` is the name of the database and `dim` is the size of the embedding vector.
+
+In case you want use it in one of your project here is the functions and some example.
 
 ## vectorDatabase API:
 
@@ -75,24 +77,18 @@ where `data_dir` is the directory where the databases will be stored and `collec
 	embedding = np.array([ 0.6162391  -1.5986143  -2.0916946   0.12942934  1.1227669  -1.4042859],dtype=np.float32)
 
 	result = db.search_vectors(embedding,k=1,threshold=0.5)
-
 	print(result)
-
 	#Match
 	#[{'id': 51, 'similarity': 0.59669983, 'metadata': {'id': 'a6dd92be-8547-45e4-9585-afb2eb91aaf6', 'name': 'kevin doe'}}]
-	
 	#No Match
 	{'status': 'success', 'msg': 'unrecognized'}  
 
 	#get :
 
     res = db.get(where={"name": "Aaron_Guiel"},incl=["metadata"])
-
 	print(res)
-
 	#Found
 	#[{'id': 1, 'metadata': {'id': 'bbf6f814-b7e8-4530-a986-54f295a4cdb5', 'name': 'Aaron_Guiel'}}]
-
 	#Not Found
 	#[]
 
@@ -109,4 +105,21 @@ where `data_dir` is the directory where the databases will be stored and `collec
 	res = db.get(incl=["vector"])
 	#res contain all vectors
 
+when using the face `recognizer` all these function are predefined in the class:
+
+
+## The Face Recognizer API
+
+Basically:
+
+	face_system.add_face(image,name)
+	face_system.del_face(name)
+	face_system.match(image,name,threshold=0.46)
+	face_system,recognize(image,k=5,threshold=0.46)
+
+The recognizer file is well documented!
+
+just download the codes and run :
+
+> python demo.py
 

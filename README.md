@@ -45,8 +45,68 @@ where `data_dir` is the directory where the databases will be stored and `collec
 |`get`|`where` Optional json dict key:value to  search in the database | `incl`Optional ['vector','metadata'] the desired element(s) to include in the response||
 |`getTotalFaces`|||
 |`get_vector`|`vector_id` int index of the vector to get||
-|`delete_vector`|`vector_id` int index of the vector to delete||
+|`delete_vector`|`vector_id`|int index of the vector to delete|
 
+**Examples**:
 
+	from sdeeVectorDB import VectorDatabase
+
+	db = VectorDatabase(data_dir='vector_db',collection='example', dim=6 )
+	
+	#add_vector:
+	
+    embedding = np.array([ 0.6162391  -1.5986143  -2.0916946   0.12942934  1.1227669  -1.4042859],dtype=np.float32)
+	metadata = {"uuid":"AsRtfgW3e4","name": "John Doe","location": "London"}
+
+	db.add_vector(embedding, metadata)
+	
+	#batch_add_vectors:
+
+    embedding1 = np.array([ 0.6162391  -1.5986143  -2.0916946   0.12942934  1.1227669  -1.4042859],dtype=np.float32)
+    embedding2 = np.array([1.8788961   0.671485   -1.7423328   0.7557847   0.51548755  1.8309314],dtype=np.float32)
+
+	metadata1 = {"uuid":"AsRtfgW3e4","name": "John Doe","location": "London"}
+	metadata2 = {"uuid":"BgHareD1z6","name": "Jane Doe","location": "Paris"}
+	
+	db.batch_add_vectors([embedding1,embedding2],[metadata1,metadata2])
+
+	#search_vectors:
+
+	embedding = np.array([ 0.6162391  -1.5986143  -2.0916946   0.12942934  1.1227669  -1.4042859],dtype=np.float32)
+
+	result = db.search_vectors(embedding,k=1,threshold=0.5)
+
+	print(result)
+
+	#Match
+	#[{'id': 51, 'similarity': 0.59669983, 'metadata': {'id': 'a6dd92be-8547-45e4-9585-afb2eb91aaf6', 'name': 'kevin doe'}}]
+	
+	#No Match
+	{'status': 'success', 'msg': 'unrecognized'}  
+
+#get :
+
+    res = db.get(where={"name": "Aaron_Guiel"},incl=["metadata"])
+
+	print(res)
+
+	#Found
+	#[{'id': 1, 'metadata': {'id': 'bbf6f814-b7e8-4530-a986-54f295a4cdb5', 'name': 'Aaron_Guiel'}}]
+
+	#Not Found
+	#[]
+
+	res = db.get(where={"name": "Aaron_Guiel"},incl=["vector"])
+
+	print(res)
+
+	#Found
+	#[{'id': 1, 'vector': [-1.9369930028915405, -2.049903154373169, 0.22178973257541656, -0.5580120086669922, 0.06811564415693283, 0.5701966285705566]}]
+
+	res = db.get(incl=["metadata"])
+	#res contain all metadatas
+	
+	res = db.get(incl=["vector"])
+	#res contain all vectors
 
 

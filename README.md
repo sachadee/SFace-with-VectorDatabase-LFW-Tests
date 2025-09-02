@@ -145,6 +145,13 @@ You can access the VectorDatabse functions true `.vecDb`
 	print(tot_face)
  	###12848
 
+  	aligned_face = face_system.detect_face(image)
+	embedding = face_system.extract_embedding(aligned_face)
+ 	metadata = {"uuid":"AsRtfgW3e4","name": "John Doe","location": "London"}
+
+	face_system.vecDb.add_vector(embedding,metadata) 
+ 	 ##Similar as :
+ 	face_system.add_face(image,name)
  
 just download the codes and run :
 

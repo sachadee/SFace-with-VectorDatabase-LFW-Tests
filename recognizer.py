@@ -1,23 +1,17 @@
 import cv2
 import numpy as np
-#from skimage import transform as trans
+from numpy import float32, int32, int64, ndarray
+from typing import List,Tuple,Union, Optional, Dict, Any
 import string
 import time
-import requests
 import pybase64
 from io import BytesIO
 import json
 import random
 import os
-import pandas as pd
-np.set_printoptions(suppress=True)
 from sdeeVectorDB import VectorDatabase
-from numpy import float32, int32, int64, ndarray
-from typing import List,Tuple,Union, Optional, Dict, Any
 
-
-
-
+np.set_printoptions(suppress=True)
 
 class FaceRecognitionSystem:
     """
@@ -34,8 +28,8 @@ class FaceRecognitionSystem:
     """
 
     def __init__(self, 
-                 detector_path='../../model/face_detection_yunet_2023mar.onnx',
-                 recognizer_path='../../model/face_recognition_sface_2021dec.onnx',
+                 detector_path='./model/face_detection_yunet_2023mar.onnx',
+                 recognizer_path='./model/face_recognition_sface_2021dec.onnx',
                  db_path='vector_db',
                  collection='Sface_lfw-deepfunneledAll',
                  cropped_dir='croppedFaces',
@@ -408,3 +402,4 @@ class FaceRecognitionSystem:
         else:
             endT = time.time() - start
             return matches
+

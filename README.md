@@ -35,6 +35,17 @@ the vectorDatabase class can be used in other project to init it for another pro
 
 where `data_dir` is the directory where the databases will be stored and `collection` is the name of the database and `dim` is the size of the embedding vector.
 
+## vectorDatabase API:
+
+|function  | param | param |param|
+|--|--|--|--|
+|`add_vector`  | `vector` float32 numpy array |`metadata` json dict | |
+|`batch_add_vectors` | `vectors` array of float32 numpy arrays | `metadatas` array of json dicts| |
+|`search_vectors`|`query vector` float32 numpy array|`k` int of the number of results desired within the threshold|`threshold` float 0.46 default (cosine)|
+|`get`|`where` Optional json dict key:value to  search in the database | `incl`Optional ['vector','metadata'] the desired element(s) to include in the response||
+|`getTotalFaces`|||
+|`get_vector`|`vector_id` int index of the vector to get||
+|`delete_vector`|`vector_id`|int index of the vector to delete|
 
 
 

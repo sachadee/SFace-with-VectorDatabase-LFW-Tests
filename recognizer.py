@@ -29,7 +29,7 @@ class FaceRecognitionSystem:
 
     def __init__(self, 
                  detector_path='./model/face_detection_yunet_2023mar.onnx',
-                 recognizer_path='./model/face_recognition_sface_2021dec.onnx',
+                 recognizer_path='./model/face_recognition_sface_2021dec_int8bq.onnx',
                  db_path='vector_db',
                  collection='Sface_lfw-deepfunneledAll',
                  cropped_dir='croppedFaces',
@@ -413,3 +413,4 @@ class FaceRecognitionSystem:
         else:
             endT = time.time() - start
             return matches
+

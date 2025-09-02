@@ -49,6 +49,7 @@ In case you want use it in one of your project here is the functions and some ex
 |`getTotalFaces`|||
 |`get_vector`|`vector_id` int index of the vector to get||
 |`delete_vector`|`vector_id`|int index of the vector to delete|
+|`deleteAllFiltered`|`where` json dict key:value||
 
 **Examples**:
 
@@ -106,6 +107,9 @@ In case you want use it in one of your project here is the functions and some ex
 	res = db.get(incl=["vector"])
 	#res contain all vectors
 
+ 	#deleteAllFiltered delete all faces matching name
+  	res = db.deleteAllFiltered(where={"name": John Doe'})
+   
 when using the face `recognizer` all these function are predefined in the class:
 
 
@@ -117,6 +121,10 @@ Basically:
 	face_system.del_face(name)
 	res = face_system.match(image,name,threshold=0.46)
 	res = face_system,recognize(image,k=5,threshold=0.46)
+
+ to init your own vectorDatabase just edit the file recognizer.py : and chanche the `collection` name in the class init part :
+
+ 
 
 The recognizer file is well documented!
 

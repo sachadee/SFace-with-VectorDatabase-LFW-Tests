@@ -1,5 +1,5 @@
 import numpy as np
-import json
+import orjson
 import os
 from numpy import float32, int32, int64, ndarray
 from typing import Any, Optional, Dict, List, Union
@@ -34,7 +34,7 @@ class VectorDatabase:
         if os.path.exists(self.metadata_file):
             try:
                 with open(self.metadata_file, "rb") as f:
-                    return json.loads(f.read())
+                    return orjson.loads(f.read())
             except json.JSONDecodeError:
                 print(f"Warning: Corrupted metadata file for collection {self.collection}, resetting.")
                 return []
@@ -46,7 +46,7 @@ class VectorDatabase:
 
     def save_metadata(self) -> None:
         with open(self.metadata_file, "wb") as f:
-            f.write(json.dumps(self.metadata))
+            f.write(orjson.dumps(self.metadata))
 
     def add_vector(self, vector: ndarray, metadata: Dict[str, str]) -> None:
         """Add a single vector while ensuring correct dimension."""
@@ -179,7 +179,27 @@ class VectorDatabase:
                     result["vector"] = self.vectors[i].tolist()
                 results.append(result)
         return results
-        
+
+    def deleteAllFiltered(self, where):
+        """Retrieve stored vectors based on metadata filters."""
+        result = False
+        todel =[]
+        for i, metadata in enumerate(self.metadata):
+            if all(metadata.get(key) == value for key, value in where.items()):
+                todel.append(i)
+                result = True
+        if result:
+            todel.reverse()
+            print(todel)
+            for ind in todel:
+                self.vectors = np.delete(self.vectors, ind, axis=0)#    
+                del self.metadata[ind]  
+            self.save_vectors()
+            self.save_metadata()
+            return {"status":"success","msg":"deleted"}
+        return {"status":"error","msg":" not found"}
+
+ 
     def getTotalFaces(self) -> int:
       return len(self.metadata)
       
@@ -198,4 +218,4 @@ class VectorDatabase:
             self.save_metadata()
 
 
-#db = VectorDatabase(data_dir="vector_db", collection="CppFaces",dim=512)
+

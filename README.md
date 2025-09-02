@@ -84,7 +84,7 @@ where `data_dir` is the directory where the databases will be stored and `collec
 	#No Match
 	{'status': 'success', 'msg': 'unrecognized'}  
 
-#get :
+	#get :
 
     res = db.get(where={"name": "Aaron_Guiel"},incl=["metadata"])
 

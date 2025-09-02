@@ -138,6 +138,14 @@ Basically:
 
 The recognizer file is well documented!
 
+
+You can access the VectorDatabse functions true `.vecDb`
+
+    tot_face = face_system.vecDb.getTotalFaces()
+	print(tot_face)
+ 	###12848
+
+ 
 just download the codes and run :
 
 > >> **python demo.py**

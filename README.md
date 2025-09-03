@@ -1,5 +1,5 @@
 
-  # 🚀 Optimized Face Recognition: 
+  # 🚀 Optimized Face Recognition API with python vectorDatabase: 
 
 A Python complete API implementation leveraging vector database technology for high-speed searches, pre-loaded with the LFW (Labeled Faces in the Wild) dataset for out-of-the-box accuracy. Using Sface https://github.com/zhongyy/SFace for recognition and Yunet https://github.com/Mr-PU/YUNet.
 

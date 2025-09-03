@@ -162,5 +162,5 @@ Some stacked results:
 
 #Adding gifs to README.md file
 
-![](img/Aaron_Peirsol.gif)
+![](img/Aaron_Peirsol.gif) ![](img/Abdoulaye_Wade.gif)
 

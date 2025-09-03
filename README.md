@@ -156,5 +156,9 @@ You can access the VectorDatabse functions true `.vecDb`
  
 just download the codes and run :
 
-> >> **python demo.py**
+> **python demo.py**
+
+Some stacked results:
+
+![]img/Aaron_Peirsol.gif
 

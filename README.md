@@ -160,5 +160,7 @@ just download the codes and run :
 
 Some stacked results:
 
-![]img/Aaron_Peirsol.gif
+#Adding gifs to README.md file
+
+![](img/Aaron_Peirsol.gif)
 

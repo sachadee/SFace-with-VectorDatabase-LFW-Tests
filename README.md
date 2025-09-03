@@ -164,3 +164,8 @@ The query images was downloaded from the web to test them against the all FLW da
 
 ![](img/Aaron_Peirsol.gif) ![](img/Abdoulaye_Wade.gif) ![](img/Adam_Sandler.gif)
 ![](img/Angela_Merkel.gif) ![](img/Angelina_Jolie.gif) ![](img/Muhammad_Ali.gif)
+
+Another of my devlopment with this API, a web dashboard true websocket server:
+
+![](img/facial34.gif)
+

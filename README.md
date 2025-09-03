@@ -167,5 +167,5 @@ The query images was downloaded from the web to test them against the all FLW da
 
 Another of my devlopment with this API, a web dashboard true websocket server:
 
-![](img/facial34.gif)
+![](img/facial34gif.gif)
 

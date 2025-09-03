@@ -160,7 +160,6 @@ just download the codes and run :
 
 Some stacked results:
 
-#Adding gifs to README.md file
 
 ![](img/Aaron_Peirsol.gif) ![](img/Abdoulaye_Wade.gif) ![](img/Adam_Sandler.gif)
 ![](img/Angela_Merkel.gif) ![](img/Angelina_Jolie.gif) ![](img/Muhammad_Ali.gif)

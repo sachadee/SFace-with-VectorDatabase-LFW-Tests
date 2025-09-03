@@ -122,12 +122,12 @@ Basically:
 	face_system.del_face(name)
 	res = face_system.match(image,name,threshold=0.46)
 	res = face_system.recognize(image,k=5,threshold=0.46) #k=5 to get the five best results inside the threshold.
- 
+ 	##The image can be a  numpy array (cv2.imread('test'.jpg') a path 'test,jpg' or a base64 string.
  	##the add_face function will automatically make these 2 functions
     aligned_face = face_system.detect_face(image)
  	embedding = face_system.extract_embedding(aligned_face)
 
- to init your own vectorDatabase just edit the file recognizer.py : and chanche the `collection` name in the class init part :
+ to init your own vectorDatabase just edit the file recognizer.py : and change the `collection` name in the class init part :
 
     def __init__(self, 
               detector_path='./model/face_detection_yunet_2023mar.onnx',
@@ -160,6 +160,7 @@ just download the codes and run :
 
 Some stacked results:
 
+The query images was downloaded from the web to test them against the all FLW database.
 
 ![](img/Aaron_Peirsol.gif) ![](img/Abdoulaye_Wade.gif) ![](img/Adam_Sandler.gif)
 ![](img/Angela_Merkel.gif) ![](img/Angelina_Jolie.gif) ![](img/Muhammad_Ali.gif)

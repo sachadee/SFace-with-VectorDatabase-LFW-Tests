@@ -161,7 +161,7 @@ just download the codes and run :
 Some stacked results:
 
 The query images was downloaded from the web to test them against the all FLW database.
-
+![](img/Aaron_Peirsol.gif)
 ![](img/Aaron_Peirsol.gif) ![](img/Abdoulaye_Wade.gif) ![](img/Adam_Sandler.gif)
 ![](img/Angela_Merkel.gif) ![](img/Angelina_Jolie.gif) ![](img/Muhammad_Ali.gif)
 
